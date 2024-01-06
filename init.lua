@@ -113,7 +113,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -266,7 +266,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-   { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -657,14 +657,35 @@ cmp.setup {
 }
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-vim.keymap.set("n", "<C-w>up", "<C-w>+", opts)
-vim.keymap.set("n", "<C-w>down", "<C-w>-", opts)
-vim.keymap.set("n", "<C-w>left", "<C-w><", opts)
-vim.keymap.set("n", "<C-w>right", "<C-w>>")
-vim.keymap.set("i", "jk", "<ESC>", opts)
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+vim.keymap.set('n', '<C-w>up', '<C-w>+', opts)
+vim.keymap.set('n', '<C-w>down', '<C-w>-', opts)
+vim.keymap.set('n', '<C-w>left', '<C-w><', opts)
+vim.keymap.set('n', '<C-w>right', '<C-w>>')
+vim.keymap.set('i', 'jk', '<ESC>', opts)
+vim.keymap.set('i', '<c-s>', '<Esc> :w<CR>a')
+vim.keymap.set('n', '<c-s>', ':w<CR>')
+vim.g.copilot_filetypes = {
+  ['*'] = false,
+  ['javascript'] = true,
+  ['typescript'] = true,
+  ['svelte'] = true,
+  ['html'] = true,
+  ['css'] = true,
+  ['json'] = true,
+  ['yaml'] = true,
+  ['markdown'] = true,
+  ['vim'] = false,
+  ['lua'] = false,
+  ['rust'] = true,
+  ['c'] = false,
+  ['c#'] = false,
+  ['c++'] = false,
+  ['go'] = true,
+  ['python'] = true,
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
