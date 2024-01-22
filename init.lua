@@ -687,5 +687,19 @@ vim.g.copilot_filetypes = {
   ['go'] = true,
   ['python'] = true,
 }
+vim.api.nvim_command [[
+    augroup ChangeBackgroudColour
+        autocmd colorscheme * :hi normal guibg=none
+    augroup END
+]]
+vim.o.termguicolors = true
+vim.cmd [[silent! colorscheme snow]]
+
+vim.o.termguicolors = true
+vim.o.background = 'dark'
+vim.cmd [[
+        silent! colorscheme snow
+        hi Normal guibg=none
+    ]]
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

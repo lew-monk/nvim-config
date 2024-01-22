@@ -10,11 +10,12 @@ return {
     null_ls.setup {
       sources = {
         formatting.prettier.with {
-          extra_filetypes = { 'svelte' },
+          extra_filetypes = { 'svelte', 'go' },
         },
         formatting.stylua.with {
-          extra_filetypes = { 'svelte' },
+          extra_filetypes = { 'svelte', 'go' },
         },
+        formatting.golines.with{},
       },
       on_attach = function(client, bufnr)
         if client.supports_method 'textDocument/formatting' then
