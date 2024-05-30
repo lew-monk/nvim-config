@@ -191,13 +191,40 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'rmehri01/onenord.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      require('onenord').setup {
+        disable = {
+          background = true,       -- Disable setting the background color
+          float_background = true, -- Disable setting the background color for floating windows
+          cursorline = false,      -- Disable the cursorline
+          eob_lines = true,
+        },
+      }
     end,
+    opts = {
+      transparent = true,
+      style = 'storm',
+      styles = {
+        sidebars = 'transparent',
+        floats = 'transparent',
+      },
+    },
   },
-
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      style = 'storm',
+      styles = {
+        sidebars = 'transparent',
+        floats = 'transparent',
+      },
+    },
+  },
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -563,11 +590,12 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {},
+  templ = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = {},
+  html = { filetypes = { 'html', 'twig', 'hbs', 'templ' } },
 
   lua_ls = {
     Lua = {
@@ -687,19 +715,18 @@ vim.g.copilot_filetypes = {
   ['go'] = true,
   ['python'] = true,
 }
-vim.api.nvim_command [[
+--[[ vim.api.nvim_command [[
     augroup ChangeBackgroudColour
         autocmd colorscheme * :hi normal guibg=none
     augroup END
-]]
+]`` ]]
 vim.o.termguicolors = true
-vim.cmd [[silent! colorscheme snow]]
+vim.cmd [[silent! colorscheme onenord]]
 
 vim.o.termguicolors = true
-vim.o.background = 'dark'
-vim.cmd [[
-        silent! colorscheme snow
-        hi Normal guibg=none
-    ]]
+
+vim.filetype.add { extension = { templ = 'templ' } }
+
+--[[ vim.o.background = 'dark' ]]
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
