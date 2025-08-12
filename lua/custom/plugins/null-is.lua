@@ -1,5 +1,5 @@
 return {
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   config = function()
     local null_ls = require 'null-ls'
     local formatting = null_ls.builtins.formatting
@@ -15,7 +15,7 @@ return {
         formatting.stylua.with {
           extra_filetypes = { 'svelte', 'go' },
         },
-        formatting.golines.with{},
+        formatting.golines.with {},
       },
       on_attach = function(client, bufnr)
         if client.supports_method 'textDocument/formatting' then
